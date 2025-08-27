@@ -20,7 +20,12 @@ def init_database(app):
         database_url = os.getenv('DATABASE_URL')
         if not database_url:
                     # Fallback to SQLite for local development
-                    database_url = 'sqlite:///local_app.db'
+                    database_url =     
+    # Log database configuration
+    if 'postgresql' in database_url:
+        print(f"✅ Using PostgreSQL database: {database_url[:50]}...")
+    else:
+        print("⚠️ Using SQLite fallback database")
 
         app.config['SQLALCHEMY_DATABASE_URI'] = database_url
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -36,6 +41,11 @@ def init_database(app):
 
     # Create tables
         with app.app_context():
-                    db.create_all()
+                    db.create_all(try:
+                db.create_all()
+                print("✅ Database tables created successfully")
+            except Exception as e:
+                print(f"⚠️ Database initialization warning: {e}")
+                # Continue without database for resilience
 
         return db
