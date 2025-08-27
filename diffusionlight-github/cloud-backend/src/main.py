@@ -25,8 +25,8 @@ def create_app():
             from src.routes.api import api_bp
             from src.routes.webhooks import webhooks_bp
 
-    app.register_blueprint(api_bp, url_prefix='/api')
-    app.register_blueprint(webhooks_bp, url_prefix='/webhooks')
+        app.register_blueprint(api_bp, url_prefix='/api')
+        app.register_blueprint(webhooks_bp, url_prefix='/webhooks')
 
     # Error handlers
     @app.errorhandler(413)
