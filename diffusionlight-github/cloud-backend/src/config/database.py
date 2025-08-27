@@ -16,6 +16,11 @@ supabase: Client = create_client(supabase_url, supabase_key) if supabase_url and
 def init_database(app):
     """Initialize database with Flask app"""
     
+    # Check if database should be disabled
+    if os.getenv('DISABLE_DATABASE', 'false').lower() == 'true':
+        print("Database disabled by DISABLE_DATABASE environment variable")
+        return None
+    
     # Configure PostgreSQL for Supabase
     database_url = os.getenv('DATABASE_URL')
     if not database_url:
