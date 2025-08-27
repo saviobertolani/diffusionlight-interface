@@ -8,8 +8,8 @@ requests==2.31.0
 celery==5.3.4
 redis==5.0.1
 gunicorn==21.2.0
-supabase==2.8.0
+supabase==2.7.4
 gotrue==2.12.4
-postgrest==0.13.2
-storage3==0.7.4
-realtime==1.0.4
+postgrest==0.16.8
+storage3==0.7.7
+realtime==2.0.2
